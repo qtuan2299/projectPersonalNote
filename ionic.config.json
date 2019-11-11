@@ -1,5 +1,7 @@
 {
   "name": "projectPersonalNote",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }
