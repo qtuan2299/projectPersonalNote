@@ -29,6 +29,7 @@ import { PageLoginPageModule } from '../pages/page-login/page-login.module';
 import { ProfileModule } from '../pages/profile/profile.module';
 import { User } from '../services/globalData';
 import { Token } from '../services/token';
+import { RegisterModule } from '../pages/register/register.module';
 @NgModule({
   declarations: [
     MyApp,
@@ -44,7 +45,8 @@ import { Token } from '../services/token';
     NotifiModule,
     WorkscheduleModule,
     PageLoginPageModule,
-    ProfileModule
+    ProfileModule,
+    RegisterModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

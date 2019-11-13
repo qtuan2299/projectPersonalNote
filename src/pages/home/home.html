@@ -4,7 +4,19 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title >{{params}}</ion-title>
-    
+    <ion-buttons *ngIf="user.result.userName==null" end>
+      <button ion-button icon-only >
+       <div>Đăng nhập</div> 
+  <ion-icon name="person"></ion-icon>
+</button>
+  </ion-buttons>
+
+  <ion-buttons *ngIf="user.result.userName!=null" end>
+      <button ion-button icon-only (click)="logout()">
+       <div>Đăng xuất</div> 
+  <ion-icon name="person"></ion-icon>
+</button>
+  </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -24,7 +36,7 @@
             <div class="front" float-left>
               <h1 card-title >{{item.tieuDe}}</h1>
               <h3 card-subtitle>
-                <ion-icon no-padding name="alarm" item-right></ion-icon>{{item.ngayPhatHanh}}
+                <ion-icon no-padding name="alarm" item-right></ion-icon>{{item.ngayPhatHanh|date}}
               </h3>
             </div>
           </ion-card-content>

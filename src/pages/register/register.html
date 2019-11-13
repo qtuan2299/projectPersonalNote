@@ -1,0 +1,77 @@
+<!-- Themes Register + logo -->
+<ion-header id="header">
+    <ion-navbar>
+        <button ion-button menuToggle>
+                        <ion-icon name="menu"></ion-icon>
+                    </button>
+
+        <ion-title>
+            <div>Đăng kí</div>
+        </ion-title>
+
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content background-size default-background>
+
+    <ion-grid>
+
+        <ion-row wrap padding>
+
+            <ion-col col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+
+                <!-- Form -->
+
+                <!--Form Title-->
+
+                <h1 title text-center padding-bottom>Register Information</h1>
+
+                <!---Input field username-->
+
+                <ion-item>
+
+                    <ion-label floating>User name</ion-label>
+
+                    <ion-input required type="text" [(ngModel)]="username"></ion-input>
+
+                    <ion-label error-field color="secondary" no-margin></ion-label>
+
+                </ion-item>
+
+                <!---Input field password-->
+
+                <ion-item>
+
+                    <ion-label floating>Password</ion-label>
+
+                    <ion-input required type="password" [(ngModel)]="password"></ion-input>
+
+                    <ion-label error-field color="secondary" no-margin></ion-label>
+
+                </ion-item>
+
+                <!---Input field email-->
+
+                <ion-item>
+
+                    <ion-label floating>Email</ion-label>
+
+                    <ion-input required type="email"></ion-input>
+
+                </ion-item>
+
+                <!---Register button-->
+
+                <button ion-button float-right outline round (click)="register()">Register</button>
+
+                <button ion-button float-left outline round (click)="skip()">Skip</button>
+
+            </ion-col>
+
+        </ion-row>
+
+    </ion-grid>
+
+</ion-content>

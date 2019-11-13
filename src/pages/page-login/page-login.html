@@ -2,19 +2,21 @@
   <ion-grid>
       <ion-row wrap padding >
           <ion-col col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
-              <button ion-button button-clear clear (click)="SkipPage()">Skip</button>
+              <h1 color-red>PERSONAL NOTE</h1>
+              <!-- <button ion-button button-clear clear (click)=""></button> -->
               <!-- <img padding-bottom [src]="data.logo" *ngIf="data.logo != null"> -->
               <ion-item transparent>
                   <ion-label floating>username</ion-label>
-                  <ion-input placeholder="Username" required type="text" [(ngModel)]="username"></ion-input>
+                  <ion-input required type="text" [(ngModel)]="username"></ion-input>
                   <ion-label error-field color="secondary" no-margin *ngIf="!isUsernameValid">error</ion-label>
               </ion-item>
               <ion-item transparent>
                   <ion-label floating>password</ion-label>
-                  <ion-input placeholder="Password" required type="password" [(ngModel)]="password"></ion-input>
+                  -- <ion-input required type="password" [(ngModel)]="password"></ion-input>
                   <ion-label error-field color="secondary" no-margin *ngIf="!isPasswordValid">error</ion-label>
               </ion-item>
-              <button ion-button float-left button-clear-outline round outline (click)="getData()">Login</button>
+              <button ion-button float-left button-clear-outline round outline (click)="getData()">Log in</button>
+              <button ion-button float-left button-clear-outline round outline (click)="register()">Sign in</button>
 
               <!-- <p>data show:{{okeoke}}{{datadata}} {{dataheader}}{{password}}</p> -->
               <!-- <button ion-button float-left button-clear-outline round outline (click)="onEvent('onRegister')">Register</button> -->

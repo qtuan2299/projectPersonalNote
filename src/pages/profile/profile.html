@@ -1,45 +1,106 @@
 <ion-header>
-    <ion-navbar>
+  <ion-navbar>
       <button ion-button menuToggle>
-        <ion-icon name="menu"></ion-icon>
-      </button>
-      <ion-title>{{params}}</ion-title>
-    </ion-navbar>
-  </ion-header>
-  <!--Theme Profile - Profie With Avatar-->
+      <ion-icon name="menu"></ion-icon>
+    </button>
+      <ion-title>Profile Infomation</ion-title>
+  </ion-navbar>
+</ion-header>
+<!--Theme Profile - Profie With Avatar-->
 
 <ion-content>
 
-    <ion-grid >
-        <ion-row>
-        <ion-col col-12>
+  <ion-grid>
+      <ion-row>
+          <ion-col col-12>
 
-            <ion-card padding box-shadow>
+              <ion-card padding box-shadow class="card-image" text-center>
 
-                <ion-avatar float-center zoom="true">
+                  <ion-avatar zoom="true">
 
-                    <img [src]="user.result.avatar" alt="">
-                    
-                    
-                    
-                </ion-avatar>
+                      <img [src]="user.result.avatar" alt="">
 
-                <ion-card-content text-center>
-                    <ion-icon icon-small name="camera"></ion-icon>
+                      <div class="icon-camera">
+                          <ion-icon icon-small name="camera" (click)="startCamera()"></ion-icon>
+                      </div>
 
-                    <h1>{{user.result.userName}}</h1>
+                  </ion-avatar>
 
-                    <p>{{user.result.surename}} {{user.result.name}}</p>
-                    <p>{{user.result.emailAddress}}</p>
+              </ion-card>
 
-                </ion-card-content>
+              <ion-card>
+                  <ion-card-content text-center>
+                      <ion-buttons end>
+                          <button (click)="dis()"><ion-icon icon-small name="create"></ion-icon>Chỉnh sửa</button>
+                      </ion-buttons>
+                      <table class="content-profile">
 
-            </ion-card>
+                          <th colspan="2">
+                              <h1>Thông tin cá nhân</h1>
+                          </th>
+                          <tr>
+                              <td>Name: </td>
+                              <td>
+                                  <ion-input required type="text" [(ngModel)]="user.result.userName" [disabled]="disable"></ion-input>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td>Surname: </td>
+                              <td>
+                                  <ion-input required type="text" [(ngModel)]="user.result.surname" [disabled]="disable"></ion-input>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td>Email: </td>
+                              <td>
+                                  <ion-input required type="text" [(ngModel)]="user.result.emailAddress" [disabled]="disable"></ion-input>
+                              </td>
+                          </tr>
 
-        </ion-col>
+                      </table>
 
-    </ion-row>
+                  </ion-card-content>
+              </ion-card>
 
-    </ion-grid>
+              <ion-buttons end>
+                  <button (click)="showChangePass()" outline color-blue>Change password</button>
+              </ion-buttons>
+
+              <ion-card>
+                  <div [ngClass]="{'active': isShowChangePass() }" [hidden]="!isShowChangePass()">
+                      <ion-grid>
+                          <ion-row>
+                              <ion-col>Old password:</ion-col>
+                              <ion-col>
+                                  <ion-input type="password" placeholder="input old pass here" [(ngModel)]="oldPass"></ion-input>
+                              </ion-col>
+                          </ion-row>
+                          <ion-row>
+                              <ion-col>New password:</ion-col>
+                              <ion-col>
+                                  <ion-input type="password" placeholder="input new pass here" [(ngModel)]="newPassword"></ion-input>
+                              </ion-col>
+                          </ion-row>
+                          <ion-row>
+                              <ion-col>Re-input password:</ion-col>
+                              <ion-col>
+                                  <ion-input type="password" placeholder="re-input new pass" [(ngModel)]="rePass"></ion-input>
+                              </ion-col>
+                          </ion-row>
+                      </ion-grid>
+                      <ion-buttons class="button-update" end>
+                          <button (click)="ChangePass()">Update</button>
+                      </ion-buttons>
+                  </div>
+              </ion-card>
+
+
+
+
+          </ion-col>
+
+      </ion-row>
+
+  </ion-grid>
 
 </ion-content>

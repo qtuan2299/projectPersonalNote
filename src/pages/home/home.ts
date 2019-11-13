@@ -4,6 +4,9 @@ import { HomeService } from '../../services/home-service';
 import { Newsdetail } from '../newsdetail/newsdetail';
 import { DataJsonController } from '../../controller/datajsoncontroller'
 import { Key } from '../../key/key'
+import { User } from '../../services/globalData';
+import { PageLoginPage } from '../page-login/page-login';
+import { Token } from '../../services/token';
 
 @Component({
   selector: 'page-home',
@@ -12,13 +15,12 @@ import { Key } from '../../key/key'
 export class HomePage implements OnInit{
   @ViewChild(InfiniteScroll) infiniteScroll: InfiniteScroll; 
   params:any;
-  username:any;
   a:number;
   back:number=1;
   now:number=1;
   next:number=2;
   last:number;
-
+  user:any;
   tieuDe:any;
   linkImage:any;
   tomTat:any;
@@ -34,9 +36,12 @@ export class HomePage implements OnInit{
     private key:Key,
     private home:HomeService,
     private dataJsonCtl:DataJsonController,
-    private navP: NavParams) {
+    private navP: NavParams, 
+    public gd : User,
+    public token: Token
+    ) {
     this.params=this.home.getTitle();
-    this.username = navP.get('username');   
+    this.user=gd.getUser();   
   }
   
   openPage(item)
@@ -91,5 +96,12 @@ export class HomePage implements OnInit{
         })    
       }, 1000);
     }
+    
+    logout(){
+      this.gd.setUser(null);
+      this.token.setToken("");
+    
+      this.navCtrl.setRoot(PageLoginPage);
+
+    }
   }
-  

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, AlertController } from 'ionic-angular';
 import { HTTP } from '@ionic-native/http';
 import { HomePage } from '../home/home';
 import { User } from '../../services/globalData';
 import { Token } from '../../services/token';
+import { Register } from '../register/register';
 
 /**
  * Generated class for the PageLoginPage page.
@@ -34,7 +35,8 @@ export class PageLoginPage {
     public http:HTTP, 
     public gd:User, 
     public token:Token,
-    public menuCtrl: MenuController ) {
+    public menuCtrl: MenuController,
+    public alertCtrl: AlertController ) {
       this.menuCtrl.enable(false,'myMenu')
   }
 
@@ -73,16 +75,32 @@ export class PageLoginPage {
         })
       }
       else{
+        let alert = this.alertCtrl.create({
+          title: 'Error!',
+          subTitle:'Are you sure filled correct!',
+          buttons:['Close']
+        })
+        alert.present();
+
         this.isUsernameValid = false;
         this.isPasswordValid = false;
       }
     })
     .catch(error => {
-        console.log("error page-login.ts: ",error.error);        
+        console.log("error page-login.ts: ",error.error);
+        let Error = JSON.parse(error.error);
+        let alert  = this.alertCtrl.create({
+          subTitle: Error.error.details,
+          buttons: ['Close']
+        })
+        alert.present();
     })
   }
   SkipPage(){
     this.menuCtrl.enable(true,'myMenu');
     this.navCtrl.setRoot(HomePage);
+  }
+  register(){
+    this.navCtrl.push(Register)
   }
 }

@@ -1,59 +1,89 @@
-// http://ionicframework.com/docs/theming/
-
-
-// App Global Sass
-// --------------------------------------------------
-// Put style rules here that you want to apply globally. These
-// styles are for the entire app and not just one component.
-// Additionally, this file can be also used as an entry point
-// to import other Sass files to be included in the output CSS.
-//
-// Shared Sass variables, which can be used to adjust Ionic's
-// default Sass variables, belong in "theme/variables.scss".
-//
-// To declare rules for a specific mode, create a child rule
-// for the .md, .ios, or .wp mode classes. The mode class is
-// automatically applied to the <body> element in the app.
-
-.item-accordion{
-    padding-left: 20px;
-}
-.item-menu:hover button{
-  color: green;
-  background: #D8D8D8;
-}
-.item-menu:hover ion-icon{
-  color: #DF013A;
-}
-.item-accordion button:hover{
-  color: green;
-  background: #D8D8D8;
+.header div,
+.header ion-icon {
+    background-color: lightseagreen;
+    color: white;
 }
 
-.item-menu{
-    animation-name: fadeInLeft 800ms;
-}
-
-@keyframes fadeInLeft {
-    from {
-      opacity: 0;
-      -webkit-transform: translate3d(-100%, 0, 0);
-      transform: translate3d(-100%, 0, 0);
-    }
-    to {
-      opacity: 1;
-      -webkit-transform: none;
-      transform: none;
-    }
-    
-  }
-  profile ion-card img {
+//===
+profile ion-card img {
     border-radius: 50%;
-    height: 120px;
-    width: 120px;
-    
-  }
+    height: 200px;
+    width: 200px;
+    margin: 0 auto;
+}
 
-  .header div {
-    background-color: red;
-  }
+profile ion-content .icon-camera {
+    margin-top: 15px;
+}
+
+profile ion-content .content-profile {
+    margin: 0 auto;
+}
+
+profile ion-content .capnhat {
+    text-align: right;
+}
+
+profile ion-content th {
+    text-align: center;
+}
+
+profile .card-image {
+    background-color: pink;
+}
+
+profile .card-image .icon-image {
+    display: block;
+}
+
+profile .card-image .icon-image ion-icon {
+    margin: 0 auto;
+}
+
+profile .button-update {
+    margin: 10px 0 0 10px;
+}.header div,
+.header ion-icon {
+    background-color: lightseagreen;
+    color: white;
+}
+
+//===
+profile ion-card img {
+    border-radius: 50%;
+    height: 170px;
+    width: 170px;
+    margin: 0 auto;
+}
+
+profile ion-content .icon-camera {
+    margin-top: 15px;
+}
+
+profile ion-content .content-profile {
+    margin: 0 auto;
+}
+
+profile ion-content .capnhat {
+    text-align: right;
+}
+
+profile ion-content th {
+    text-align: center;
+}
+
+profile .card-image {
+    background-color: pink;
+}
+
+profile .card-image .icon-image {
+    display: block;
+}
+
+profile .card-image .icon-image ion-icon {
+    margin: 0 auto;
+}
+
+profile .button-update {
+    margin: 10px 0 0 10px;
+}
