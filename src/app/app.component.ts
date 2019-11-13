@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform, NavParams } from 'ionic-angular';
+import { Nav, Platform, NavParams, NavController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -12,8 +12,11 @@ import { Workschedule } from '../pages/workschedule/workschedule';
 import { Notifi } from '../pages/notification/notification';
 import { PageLoginPage } from '../pages/page-login/page-login';
 import { Profile } from '../pages/profile/profile';
+import { User } from '../services/globalData';
+import { Token } from '../services/token';
 @Component({
   providers : [MenuService,MenuController,MenuModel],
+  selector: 'app',
   templateUrl: 'app.html'
 })
 export class MyApp {
@@ -26,7 +29,12 @@ export class MyApp {
 
   //pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public menu:MenuController) {
+  constructor(public platform: Platform, 
+    public statusBar: StatusBar, 
+    public splashScreen: SplashScreen, 
+    public menu:MenuController,
+    public gd:User,
+    public token:Token) {
     this.initializeApp();
     this.params = menu.HandleViewEventgetID();
     //console.log(menu.HandleViewEventgetID());
@@ -89,5 +97,12 @@ export class MyApp {
   }
   HandelControllerEvent(event:any,data:any){
     this.pages =data;
+  }
+  logout(){
+    this.gd.setUser(null);
+    this.token.setToken("");
+    this.nav.setRoot(PageLoginPage)
+    //this.navCtrl.push(PageLoginPage);
+
   }
 }

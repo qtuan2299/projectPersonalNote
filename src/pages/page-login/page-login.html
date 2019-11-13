@@ -1,35 +1,38 @@
-<ion-content white-background>
-  <ion-grid>
-      <ion-row wrap padding >
-          <ion-col col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
-              <h1 color-red>PERSONAL NOTE</h1>
-              <!-- <button ion-button button-clear clear (click)=""></button> -->
-              <!-- <img padding-bottom [src]="data.logo" *ngIf="data.logo != null"> -->
-              <ion-item transparent>
-                  <ion-label floating>username</ion-label>
-                  <ion-input required type="text" [(ngModel)]="username"></ion-input>
-                  <ion-label error-field color="secondary" no-margin *ngIf="!isUsernameValid">error</ion-label>
-              </ion-item>
-              <ion-item transparent>
-                  <ion-label floating>password</ion-label>
-                  -- <ion-input required type="password" [(ngModel)]="password"></ion-input>
-                  <ion-label error-field color="secondary" no-margin *ngIf="!isPasswordValid">error</ion-label>
-              </ion-item>
-              <button ion-button float-left button-clear-outline round outline (click)="getData()">Log in</button>
-              <button ion-button float-left button-clear-outline round outline (click)="register()">Sign in</button>
+<ion-content>
+    <ion-grid>
+        <h1>PERSONAL NOTE</h1>
+        <ion-row wrap padding>
 
-              <!-- <p>data show:{{okeoke}}{{datadata}} {{dataheader}}{{password}}</p> -->
-              <!-- <button ion-button float-left button-clear-outline round outline (click)="onEvent('onRegister')">Register</button> -->
-          </ion-col>
-          <!-- <ion-col col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6 social>
+            <ion-col col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+                <!-- <button ion-button button-clear clear (click)=""></button> -->
+                <!-- <img padding-bottom [src]="data.logo" *ngIf="data.logo != null"> -->
+                <ion-icon item-left></ion-icon>
+                <ion-item transparent>
+                    <ion-label floating>Username</ion-label>
+                    <ion-input required type="text" [(ngModel)]="username"></ion-input>
+                    <ion-label error-field color="secondary" no-margin *ngIf="!isUsernameValid">error</ion-label>
+                </ion-item>
+                <ion-item transparent padding-bottom>
+                    <ion-label floating>Password</ion-label>
+                    --
+                    <ion-input required type="password" [(ngModel)]="password"></ion-input>
+                    <ion-label error-field color="secondary" no-margin *ngIf="!isPasswordValid">error</ion-label>
+                </ion-item>
+                <button ion-button float-left button-clear-outline round outline (click)="getData()">Log in</button>
+                <button ion-button float-right button-clear-outline round outline margin-left (click)="register()">Sign in</button>
+
+                <!-- <p>data show:{{okeoke}}{{datadata}} {{dataheader}}{{password}}</p> -->
+                <!-- <button ion-button float-left button-clear-outline round outline (click)="onEvent('onRegister')">Register</button> -->
+            </ion-col>
+            <!-- <ion-col col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6 social>
               <button ion-button round outline color="facebook" (click)="onEvent('onFacebook')">Facebook</button>
               <button ion-button round outline color="twitter" (click)="onEvent('onTwitter')">Twitter</button>
               <button ion-button round outline color="google" (click)="onEvent('onGoogle')">Google</button>
               <button ion-button round outline color="pinterest" (click)="onEvent('onPinterest')">Pinterest</button>
           </ion-col> -->
-      </ion-row>
-  </ion-grid>
-  <!-- <p>check: {{check}}</p>
+        </ion-row>
+    </ion-grid>
+    <!-- <p>check: {{check}}</p>
   <p>status: {{status}}</p>
   <p>hearder: {{header}}</p>
   <p>data: {{data}}</p> -->

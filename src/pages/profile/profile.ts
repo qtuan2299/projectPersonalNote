@@ -69,7 +69,8 @@ export class Profile implements OnInit{
       quality: 100,
       destinationType: this.camera.DestinationType.FILE_URI,
       encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE
+      mediaType: this.camera.MediaType.PICTURE,
+      correctOrientation:true,
     };
   
     this.camera.getPicture(options).then((imageData) => {
@@ -78,7 +79,7 @@ export class Profile implements OnInit{
     this.file.readAsDataURL(path,filename).then((base64data)=>{
       this.http.setDataSerializer('json');
       this.photos.push(base64data);
-      this.user.result.avatar=base64data;
+      
       this.http.put('http://192.168.1.221:8803/api/services/app/User/Update',{
           "userName": this.user.result.userName,
           "name": this.user.result.name,
@@ -95,11 +96,9 @@ export class Profile implements OnInit{
           'Authorization':'Bearer '+ this.token.getToken(),
         }).then(data => { 
             // this.user.result.avatar;
-            
-            let alert = this.alertCtrl.create({
-              title: '',
-              message: 'update avatar susscess!',
-            })
+            this.user.result.avatar=base64data;
+            alert('Changed Avatar Success!');
+
             base64data=null;
             this.gd.setUser(this.user);
             // location.reload();
@@ -130,11 +129,8 @@ console.log(this.user);
         }).then(data => { 
             // this.user.result.avatar;
             
-            let alert = this.alertCtrl.create({
-              title: '',
-              message: 'update profile susscess!',
-            })
             this.gd.setUser(this.user);
+            alert('Changed Profile Success!');
             // location.reload();
           })
 

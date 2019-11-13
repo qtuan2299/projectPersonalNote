@@ -16,7 +16,7 @@
 
               <ion-card padding box-shadow class="card-image" text-center>
 
-                  <ion-avatar zoom="true">
+                  <ion-avatar>
 
                       <img [src]="user.result.avatar" alt="">
 
@@ -39,15 +39,15 @@
                               <h1>Thông tin cá nhân</h1>
                           </th>
                           <tr>
-                              <td>Name: </td>
+                              <td>User Name: </td>
                               <td>
-                                  <ion-input required type="text" [(ngModel)]="user.result.userName" [disabled]="disable"></ion-input>
+                                  <ion-input required type="text" [(ngModel)]="user.result.userName" [disabled]="true"></ion-input>
                               </td>
                           </tr>
                           <tr>
-                              <td>Surname: </td>
+                              <td>Name: </td>
                               <td>
-                                  <ion-input required type="text" [(ngModel)]="user.result.surname" [disabled]="disable"></ion-input>
+                                  <ion-input required type="text" [(ngModel)]="user.result.name" [disabled]="disable"></ion-input>
                               </td>
                           </tr>
                           <tr>
