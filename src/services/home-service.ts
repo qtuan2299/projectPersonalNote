@@ -5,7 +5,7 @@ import { HTTP } from '@ionic-native/http'
 export class HomeService{
     constructor(public api:API,
         private http:HTTP){}
-    urlAPI='http://192.168.1.221:8803/api/services/app/Information/GetListAsyncByTitle'
+    urlAPI='http://hinnova.vn:8803/api/services/app/Information/GetListAsyncByTitle'
     getTitle = ():string => 'Tin tức nổi bật';  
     //getData() : lấy dữ liệu từ urlAPI
     getData(){

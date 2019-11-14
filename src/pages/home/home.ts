@@ -56,7 +56,7 @@ export class HomePage implements OnInit{
         this.tieuDe = Data.result[index].tieuDe;
         this.tomTat = Data.result[index].tomTat;
         this.ngayPhatHanh = Data.result[index].ngayPhatHanh;
-        this.linkImage = 'http://hinnova.vn:8002/assets/images/'+Data.result[index].linkImage;
+        this.linkImage = 'http://hinnova.vn:92/assets/images/'+Data.result[index].linkImage;
         //'http://192.168.1.211:8803/assets/images/'+
         this.listData.push({noiDung: this.noiDung, tieuDe: this.tieuDe, tomTat: this.tomTat, ngayPhatHanh:this.ngayPhatHanh,linkImage:this.linkImage});
         //this.listData.push(data[0])???; error khi build do ionic không đọc dc data[0], nhưng angular lại hiểu.
@@ -78,7 +78,7 @@ export class HomePage implements OnInit{
             this.tieuDe = Data.result[index].tieuDe;
             this.tomTat = Data.result[index].tomTat;
             this.ngayPhatHanh = Data.result[index].ngayPhatHanh;
-            this.linkImage = 'http://hinnova.vn:8002/assets/images/'+Data.result[index].linkImage;
+            this.linkImage = 'http://hinnova.vn:92/assets/images/'+Data.result[index].linkImage;
             this.listData.push({noiDung: this.noiDung, tieuDe: this.tieuDe, tomTat: this.tomTat, ngayPhatHanh:this.ngayPhatHanh,linkImage:this.linkImage});
           }
          

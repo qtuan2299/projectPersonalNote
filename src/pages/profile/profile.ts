@@ -16,10 +16,10 @@ import { LoadingService } from "../../services/loading-services";
 })
 
 export class Profile implements OnInit{
-  photos:any=[];
+  name:any;
+  email:any;
   public base64photos:any;
   user:any;
-  hideMe=false;
   disable=true;
   Showchangepass = false;
   public oldPass:any;
@@ -39,7 +39,8 @@ export class Profile implements OnInit{
       ){
         console.log("get variable global: ",gd.getUser());        
         this.user = gd.getUser();
-        
+        this.name = this.user.result.name ;
+        this.email = this.user.result.emailAddress;
     }
 
     ngOnInit(){
@@ -80,7 +81,7 @@ export class Profile implements OnInit{
     let path = imageData.substring(0,imageData.lastIndexOf('/')+1);
     this.file.readAsDataURL(path,filename).then((base64data)=>{
       this.http.setDataSerializer('json');
-      this.http.put('http://192.168.1.221:8803/api/services/app/User/Update',{
+      this.http.put('http://hinnova.vn:8803/api/services/app/User/Update',{
           "userName": this.user.result.userName,
           "name": this.user.result.name,
           "surname": this.user.result.surname,
@@ -109,18 +110,17 @@ export class Profile implements OnInit{
       alert(err.error);
      });
     })
-    this.loading.hide();
   }
 
   dis(){
-    if(this.disable==false){
+    if(this.disable==false && this.checkChange()){
       this.loading.show();
       console.log(this.user);
-      this.http.put('http://192.168.1.221:8803/api/services/app/User/Update',{
+      this.http.put('http://hinnova.vn:8803/api/services/app/User/Update',{
           "userName": this.user.result.userName,
-          "name": this.user.result.name,
+          "name": this.name,
           "surname": this.user.result.surname,
-          "emailAddress": this.user.result.emailAddress,
+          "emailAddress": this.email,
           "avatar": this.user.result.avatar,
           "isActive": this.user.result.isActive,
           "fullName": this.user.result.fullName,
@@ -131,7 +131,8 @@ export class Profile implements OnInit{
         },{
           'Authorization':'Bearer '+ this.token.getToken(),
         }).then(data => { 
-          
+            this.user.result.name = this.name;
+            this.user.result.emailAddress = this.email;
             this.gd.setUser(this.user);
             this.loading.hide();
             alert('Changed Profile Success!');
@@ -151,7 +152,11 @@ export class Profile implements OnInit{
   isShowChangePass(){
     return this.Showchangepass;
   }
-
+  checkChange(){
+    if(this.name != this.user.result.name || this.email != this.user.result.emailAddress)
+    return true;
+    else return false;
+  }
   ChangePass(){
     console.log("oldpass: ",this.oldPass);
     console.log("newpas: ", this.newPassword);
@@ -160,7 +165,7 @@ export class Profile implements OnInit{
     if(this.rePass==this.newPassword){
       this.loading.show();
       this.http.setDataSerializer('json');
-      this.http.post('http://192.168.1.221:8803/api/services/app/User/ChangePassword',{
+      this.http.post('http://hinnova.vn:8803/api/services/app/User/ChangePassword',{
         "currentPassword": this.oldPass,
         "newPassword": this.newPassword
       },{
