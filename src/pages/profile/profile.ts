@@ -69,14 +69,14 @@ export class Profile implements OnInit{
 
     startCamera(){
       const options: CameraOptions = {
-      quality: 100,
+      quality: 70,
       destinationType: this.camera.DestinationType.FILE_URI,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
       correctOrientation:true,
     };
-    this.loading.show();
     this.camera.getPicture(options).then((imageData) => {
+    this.loading.show();
     let filename = imageData.substring(imageData.lastIndexOf('/')+1);
     let path = imageData.substring(0,imageData.lastIndexOf('/')+1);
     this.file.readAsDataURL(path,filename).then((base64data)=>{
@@ -96,18 +96,18 @@ export class Profile implements OnInit{
         },{
           'Authorization':'Bearer '+ this.token.getToken(),
         }).then(data => { 
-            // this.user.result.avatar;
-            this.loading.hide();
+            
             this.user.result.avatar=base64data;
-            alert('Changed Avatar Success!');
-
             base64data=null;
             this.gd.setUser(this.user);
-            // location.reload();
+            alert('Changed Avatar Success!');
+            this.loading.hide();
+            
           })
     }, (err) => {
+     
+      alert(err.error); 
       this.loading.hide();
-      alert(err.error);
      });
     })
   }
@@ -134,9 +134,9 @@ export class Profile implements OnInit{
             this.user.result.name = this.name;
             this.user.result.emailAddress = this.email;
             this.gd.setUser(this.user);
-            this.loading.hide();
-            alert('Changed Profile Success!');
             
+            alert('Changed Profile Success!');
+            this.loading.hide();
           })
           
     }
