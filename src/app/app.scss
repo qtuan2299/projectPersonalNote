@@ -92,4 +92,35 @@ page-page-login h1 {
     margin: 0 auto;
     padding-top: 10px;
 }
+page-page-login ion-content h1 {
+    color: blue;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0 auto;
+    margin-top: 10px;
+    border-bottom: solid green 2px;
+    padding: 5px;
+}
+
+page-page-login ion-content ion-row {
+    animation-name: fadeInLeft;
+    animation-duration: 2s;
+}
+
+@keyframes fadeInLeft {
+    from {
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+    }
+    to {
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+profile ion-buttons button {
+    padding: 10px;
+    border-radius: 15px;
+    // color: gray;
+    // background-color: olivedrab;
+
+}
 

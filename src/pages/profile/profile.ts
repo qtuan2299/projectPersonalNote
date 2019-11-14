@@ -7,14 +7,17 @@ import { File } from '@ionic-native/file';
 import { Camera, CameraOptions, PictureSourceType } from '@ionic-native/camera';
 import { HTTP } from '@ionic-native/http';
 import { Scheduler } from "rxjs";
+import { LoadingService } from "../../services/loading-services";
 
 @Component({
   templateUrl:"profile.html",
   selector:"profile",
-  providers: [Camera,File]
+  providers: [Camera,File,LoadingService]
 })
 
 export class Profile implements OnInit{
+  name:any;
+  email:any;
   photos:any=[];
   public base64photos:any;
   user:any;
@@ -33,11 +36,13 @@ export class Profile implements OnInit{
       public camera: Camera, 
       public file:File, 
       public http:HTTP,
-      public alerCtrl:AlertController
+      public alerCtrl:AlertController,
+      private loading: LoadingService
       ){
         console.log("get variable global: ",gd.getUser());        
         this.user = gd.getUser();
-        
+        this.name = this.user.result.name;
+        this.email = this.user.result.emailAddress;
     }
 
     ngOnInit(){
@@ -77,9 +82,8 @@ export class Profile implements OnInit{
     let filename = imageData.substring(imageData.lastIndexOf('/')+1);
     let path = imageData.substring(0,imageData.lastIndexOf('/')+1);
     this.file.readAsDataURL(path,filename).then((base64data)=>{
+      this.loading.show();
       this.http.setDataSerializer('json');
-      this.photos.push(base64data);
-      
       this.http.put('http://192.168.1.221:8803/api/services/app/User/Update',{
           "userName": this.user.result.userName,
           "name": this.user.result.name,
@@ -95,10 +99,12 @@ export class Profile implements OnInit{
         },{
           'Authorization':'Bearer '+ this.token.getToken(),
         }).then(data => { 
+            this.loading.hide();
             // this.user.result.avatar;
             this.user.result.avatar=base64data;
             alert('Changed Avatar Success!');
-
+            this.user.result.name = this.name;
+            this.user.result.emailAddress = this.email;
             base64data=null;
             this.gd.setUser(this.user);
             // location.reload();
@@ -108,15 +114,21 @@ export class Profile implements OnInit{
      });
     })
   }
-
+  checkChange(){
+    if(this.name != this.user.result.name || this.email != this.user.result.emailAddress)
+    return true;
+    else return false;
+  }
   dis(){
-    if(this.disable==false){
+    if(this.disable==false && this.checkChange()){
+      var that = this;
+      that.loading.show();
 console.log(this.user);
       this.http.put('http://192.168.1.221:8803/api/services/app/User/Update',{
           "userName": this.user.result.userName,
-          "name": this.user.result.name,
+          "name": this.name,
           "surname": this.user.result.surname,
-          "emailAddress": this.user.result.emailAddress,
+          "emailAddress": this.email,
           "avatar": this.user.result.avatar,
           "isActive": this.user.result.isActive,
           "fullName": this.user.result.fullName,
@@ -129,11 +141,13 @@ console.log(this.user);
         }).then(data => { 
             // this.user.result.avatar;
             
+            that.loading.hide();
+
             this.gd.setUser(this.user);
             alert('Changed Profile Success!');
             // location.reload();
           })
-
+          that.loading.hide();
     }
     
     this.disable=!this.disable;

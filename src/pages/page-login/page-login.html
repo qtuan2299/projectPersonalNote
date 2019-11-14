@@ -1,6 +1,6 @@
 <ion-content>
     <ion-grid>
-        <h1>PERSONAL NOTE</h1>
+        <h1>TIN TỨC NỘI BỘ</h1>
         <ion-row wrap padding>
 
             <ion-col col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
@@ -18,8 +18,7 @@
                     <ion-input required type="password" [(ngModel)]="password"></ion-input>
                     <ion-label error-field color="secondary" no-margin *ngIf="!isPasswordValid">error</ion-label>
                 </ion-item>
-                <button ion-button float-left button-clear-outline round outline (click)="getData()">Log in</button>
-                <button ion-button float-right button-clear-outline round outline margin-left (click)="register()">Sign in</button>
+                <button ion-button float-center button-clear-outline round outline (click)="getData()">Log in</button>
 
                 <!-- <p>data show:{{okeoke}}{{datadata}} {{dataheader}}{{password}}</p> -->
                 <!-- <button ion-button float-left button-clear-outline round outline (click)="onEvent('onRegister')">Register</button> -->

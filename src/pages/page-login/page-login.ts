@@ -5,6 +5,7 @@ import { HomePage } from '../home/home';
 import { User } from '../../services/globalData';
 import { Token } from '../../services/token';
 import { Register } from '../register/register';
+import { LoadingService } from '../../services/loading-services';
 
 /**
  * Generated class for the PageLoginPage page.
@@ -36,7 +37,8 @@ export class PageLoginPage {
     public gd:User, 
     public token:Token,
     public menuCtrl: MenuController,
-    public alertCtrl: AlertController ) {
+    public alertCtrl: AlertController,
+    public loading:LoadingService ) {
       this.menuCtrl.enable(false,'myMenu')
   }
 
@@ -44,6 +46,7 @@ export class PageLoginPage {
     console.log('ionViewDidLoad PageLoginPage');
   }
   getData(){
+    this.loading.show();
     this.http.setDataSerializer('json');
     this.http.post('http://192.168.1.221:8803/api/TokenAuth/Authenticate',{
       "userNameOrEmailAddress": this.username, 
@@ -67,10 +70,18 @@ export class PageLoginPage {
             this.gd.setUser(Data2);
             console.log("Data2:",Data2);
             console.log("variable global: ",this.gd);
-            this.menuCtrl.enable(true,'myMenu');          
+            this.menuCtrl.enable(true,'myMenu');
+            this.loading.hide();        
             this.navCtrl.setRoot(HomePage);
           }
         }).catch(err => {
+          this.loading.hide();
+          let alert = this.alertCtrl.create({
+            title: 'Notification',
+            subTitle: 'Log in failed!',
+            buttons:['Close']
+          });
+          alert.present();
           console.log("error from get id user",err.error);
         })
       }
@@ -89,6 +100,7 @@ export class PageLoginPage {
     .catch(error => {
         console.log("error page-login.ts: ",error.error);
         let Error = JSON.parse(error.error);
+        this.loading.hide();
         let alert  = this.alertCtrl.create({
           subTitle: Error.error.details,
           buttons: ['Close']

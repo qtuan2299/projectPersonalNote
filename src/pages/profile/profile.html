@@ -47,13 +47,13 @@
                           <tr>
                               <td>Name: </td>
                               <td>
-                                  <ion-input required type="text" [(ngModel)]="user.result.name" [disabled]="disable"></ion-input>
+                                  <ion-input required type="text" [(ngModel)]="name" [disabled]="disable"></ion-input>
                               </td>
                           </tr>
                           <tr>
                               <td>Email: </td>
                               <td>
-                                  <ion-input required type="text" [(ngModel)]="user.result.emailAddress" [disabled]="disable"></ion-input>
+                                  <ion-input required type="text" [(ngModel)]="email" [disabled]="disable"></ion-input>
                               </td>
                           </tr>
 
@@ -63,7 +63,7 @@
               </ion-card>
 
               <ion-buttons end>
-                  <button (click)="showChangePass()" outline color-blue>Change password</button>
+                  <button (click)="showChangePass()" outline color-blue><ion-icon name="key"></ion-icon>Change pass</button>
               </ion-buttons>
 
               <ion-card>
@@ -89,7 +89,7 @@
                           </ion-row>
                       </ion-grid>
                       <ion-buttons class="button-update" end>
-                          <button (click)="ChangePass()">Update</button>
+                          <button (click)="ChangePass()"><ion-icon name="sync"></ion-icon>Update</button>
                       </ion-buttons>
                   </div>
               </ion-card>
