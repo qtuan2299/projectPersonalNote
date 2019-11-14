@@ -48,7 +48,7 @@ export class PageLoginPage {
   getData(){
     this.loading.show();
     this.http.setDataSerializer('json');
-    this.http.post('http://192.168.1.221:8803/api/TokenAuth/Authenticate',{
+    this.http.post('http://hinnova.vn:8803/api/TokenAuth/Authenticate',{
       "userNameOrEmailAddress": this.username, 
       "password" : this.password,
       "rememberClient": 'true'
@@ -59,7 +59,7 @@ export class PageLoginPage {
         //let accessToken = Data.result.accessToken;
         this.token.setToken(Data.result.accessToken)
         let userId = Data.result.userId;
-        let getUrlFromId = 'http://192.168.1.221:8803/api/services/app/User/Get?Id='+userId;
+        let getUrlFromId = 'http://hinnova.vn:8803/api/services/app/User/Get?Id='+userId;
         this.http.get(getUrlFromId,{
           // nothing
         },{

@@ -15,11 +15,6 @@ import { Token } from '../../services/token';
 export class HomePage implements OnInit{
   @ViewChild(InfiniteScroll) infiniteScroll: InfiniteScroll; 
   params:any;
-  a:number;
-  back:number=1;
-  now:number=1;
-  next:number=2;
-  last:number;
   user:any;
   tieuDe:any;
   linkImage:any;
@@ -61,7 +56,7 @@ export class HomePage implements OnInit{
         this.tieuDe = Data.result[index].tieuDe;
         this.tomTat = Data.result[index].tomTat;
         this.ngayPhatHanh = Data.result[index].ngayPhatHanh;
-        this.linkImage = 'http://192.168.1.221:8002/assets/images/'+Data.result[index].linkImage;
+        this.linkImage = 'http://hinnova.vn:8002/assets/images/'+Data.result[index].linkImage;
         //'http://192.168.1.211:8803/assets/images/'+
         this.listData.push({noiDung: this.noiDung, tieuDe: this.tieuDe, tomTat: this.tomTat, ngayPhatHanh:this.ngayPhatHanh,linkImage:this.linkImage});
         //this.listData.push(data[0])???; error khi build do ionic không đọc dc data[0], nhưng angular lại hiểu.
@@ -83,7 +78,7 @@ export class HomePage implements OnInit{
             this.tieuDe = Data.result[index].tieuDe;
             this.tomTat = Data.result[index].tomTat;
             this.ngayPhatHanh = Data.result[index].ngayPhatHanh;
-            this.linkImage = 'http://192.168.1.221:8002/assets/images/'+Data.result[index].linkImage;
+            this.linkImage = 'http://hinnova.vn:8002/assets/images/'+Data.result[index].linkImage;
             this.listData.push({noiDung: this.noiDung, tieuDe: this.tieuDe, tomTat: this.tomTat, ngayPhatHanh:this.ngayPhatHanh,linkImage:this.linkImage});
           }
          

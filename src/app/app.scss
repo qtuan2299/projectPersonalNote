@@ -105,6 +105,11 @@ page-page-login ion-content ion-row {
     animation-name: fadeInLeft;
     animation-duration: 2s;
 }
+page-page-login button.center {
+    margin-left: auto;
+    margin-right: auto;
+    display: block !important;
+}
 
 @keyframes fadeInLeft {
     from {

@@ -4,19 +4,7 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title >{{params}}</ion-title>
-    <!-- <ion-buttons *ngIf="user.result.userName==null" end>
-      <button ion-button icon-only >
-       <div>Đăng nhập</div> 
-  <ion-icon name="person"></ion-icon>
-</button>
-  </ion-buttons>
 
-  <ion-buttons *ngIf="user.result.userName!=null" end>
-      <button ion-button icon-only (click)="logout()">
-       <div>Đăng xuất</div> 
-  <ion-icon name="person"></ion-icon>
-</button>
-  </ion-buttons> -->
   </ion-navbar>
 </ion-header>
 
@@ -44,17 +32,6 @@
         <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
           <ion-infinite-scroll-content></ion-infinite-scroll-content>
         </ion-infinite-scroll>
-        <!-- <div float-right *ngIf="last!=0"> -->
-          <!-- <table class="home-table">
-            <tr>
-          <td><button *ngIf="now>2" (click)="goPage(1)"><ion-icon name="rewind"></ion-icon></button></td>
-          <td><button *ngIf="now>=2" (click)="goPage(now-1)"><ion-icon></ion-icon>{{back}}</button></td>
-          <td><button class="now-page">{{now}}</button></td>
-          <td><button *ngIf="now<=last" (click)="goPage(now+1)">{{next}}</button></td>
-          <td><button *ngIf="now<=last-2" (click)="goPage(last+0.5)" ><ion-icon name="fastforward"></ion-icon></button></td>
-        </tr>
-        </table> -->
-        <!-- </div> -->
       </ion-col>
 
     </ion-row>
