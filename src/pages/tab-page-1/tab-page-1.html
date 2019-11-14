@@ -17,7 +17,7 @@
         <ion-list *ngFor="let p of params; let i= index">
             <tr>
                 <td class="time">
-                    {{p.time}}
+                    {{p.creationTime}}
                 </td>
                 <td class="icon-timeline">
                     <div>
@@ -25,10 +25,10 @@
                     </div>
                 </td>
                 <td rowspan="2" class="content-timeline">
-                    <div class="title-content">{{p.title}}
+                    <div class="title-content">{{p.tieuDe}}
                         <!-- <button ion-button expand="block" (click)="schedulelocalNotification()">schedulelocalNotification</button> -->
                     </div>
-                    <div style="color: blue;">
+                    <!-- <div style="color: blue;">
                         <ion-icon name="person"></ion-icon>{{p.person}}
                     </div>
                     <div style="color:red;">
@@ -36,7 +36,7 @@
                     </div>
                     <div style="color:lime;">
                         <ion-icon name="contact"></ion-icon>{{p.contact}}
-                    </div>
+                    </div> -->
                 </td>
             </tr>
             
