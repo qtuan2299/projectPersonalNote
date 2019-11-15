@@ -17,7 +17,7 @@
       <ion-list *ngFor="let p of page; let i= index">
           <tr>
               <td class="time">
-                  {{page.creationTime}}
+                  {{p.creationTime}}
               </td>
               <td class="icon-timeline">
                   <div>
@@ -25,7 +25,7 @@
                   </div>
               </td>
               <td rowspan="2" class="content-timeline">
-                  <div class="title-content">{{page.tieuDe}}
+                  <div class="title-content">{{p.tieuDe}}
                       <!-- <button ion-button expand="block" (click)="schedulelocalNotification()">schedulelocalNotification</button> -->
                   </div>
                   <!-- <div style="color: blue;">

@@ -35,9 +35,9 @@ export class Tab2{
         this.getAllSchedule();
     }
 
-    reorderItems = (indexes): void => {
-        this.page = reorderArray(this.page, indexes);
-    }
+    // reorderItems = (indexes): void => {
+    //     this.page = reorderArray(this.page, indexes);
+    // }
     getAllSchedule(){
         let userData = this.gd.getUser(); 
       console.log("id: ",userData.result.id);
@@ -55,7 +55,8 @@ export class Tab2{
           for (let index = 0; index < Data.result.length; index++) {
             this.tieuDe = Data.result[index].tieuDe;
             this.creationTime = Data.result[index].creationTime;// time
-            this.page.push({tieuDe: this.tieuDe, creationTime:this.creationTime})
+            console.log("data: ",Data.result[index].creationTime);
+            this.page.push({tieuDe: this.tieuDe, creationTime: this.creationTime})
           }
         }
         //to do something

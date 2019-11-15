@@ -64,7 +64,7 @@ export class Person {
             this.tieuDe = Data.result[index].tieuDe;
             this.creationTime = Data.result[index].creationTime;
 
-            this.params.push({tieuDe: this.tieuDe, creationTime:this.creationTime})
+            this.params.push({tieuDe: this.tieuDe, creationTime: this.creationTime})
           }
         }
         //to do something
