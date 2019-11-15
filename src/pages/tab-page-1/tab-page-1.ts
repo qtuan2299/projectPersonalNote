@@ -13,9 +13,12 @@ import { Token } from '../../services/token';
   providers: [WorkScheduleService, LocalNotifications]
 })
 export class Person {
-  params: any = {};
   d= new Date();       
   time:any;
+  p:any;
+  tieuDe:String;
+  creationTime:String;
+  params: Array<{tieuDe:String,creationTime:any}> = [];
   constructor(NavP:NavParams,
     public NavCrtl:NavController, 
     private workschedule: WorkScheduleService,
@@ -24,12 +27,13 @@ export class Person {
     public gd:User,
     public token:Token
     ) {
-    this.params;///
+    // this.params;///
     //this.workschedule.getDataForLayout1();
     this.schedulelocalNotification();
     
   }
   schedulelocalNotification(){
+    //test fuctional with stastic data
     // for (let i = 0; i < this.params.length; i++) {
     //    this.time=this.params[i].time.split(':');
     //    if(this.time[0]-this.d.getHours()==1||this.time[0]-this.d.getHours()==0)
@@ -40,7 +44,8 @@ export class Person {
     //           +this.params[i].pin+'\n'+this.params[i].contact
     //         // trigger: {at: new Date(this.d.getDay(),this.time[0],this.time[1])},
     //          // sound: isAndroid ? 'file://sound.mp3': 'file://beep.caf',
-    //         });    
+    //         });  
+    
     //   }
       let userData = this.gd.getUser(); 
       console.log("id: ",userData.result.id);
@@ -52,8 +57,15 @@ export class Person {
         'Authorization':'Bearer '+ this.token.getToken(),
       }).then( data => {
         let Data = JSON.parse(data.data);
+        console.log("data: ",Data);
+        
         if(data.status == 200){
-          this.params = Data.result;
+          for (let index = 0; index < Data.result.length; index++) {
+            this.tieuDe = Data.result[index].tieuDe;
+            this.creationTime = Data.result[index].creationTime;
+
+            this.params.push({tieuDe: this.tieuDe, creationTime:this.creationTime})
+          }
         }
         //to do something
       })
