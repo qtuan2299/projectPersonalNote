@@ -6,6 +6,7 @@ import { LocalNotifications } from '@ionic-native/local-notifications'
 import { HTTP } from '@ionic-native/http';
 import { User } from '../../services/globalData';
 import { Token } from '../../services/token';
+import { LoadingService } from '../../services/loading-services';
 
 @Component({
   selector: 'date-pipe',
@@ -25,7 +26,8 @@ export class Person {
     private localNotifications: LocalNotifications,
     private http:HTTP,
     public gd:User,
-    public token:Token
+    public token:Token,
+    private loading:LoadingService
     ) {
     // this.params;///
     //this.workschedule.getDataForLayout1();
@@ -33,6 +35,7 @@ export class Person {
     
   }
   schedulelocalNotification(){
+    this.loading.show();
     //test fuctional with stastic data
     // for (let i = 0; i < this.params.length; i++) {
     //    this.time=this.params[i].time.split(':');
@@ -60,6 +63,7 @@ export class Person {
         console.log("data: ",Data);
         
         if(data.status == 200){
+          this.loading.hide();
           for (let index = 0; index < Data.result.length; index++) {
             this.tieuDe = Data.result[index].tieuDe;
             this.creationTime = Data.result[index].creationTime;
@@ -71,7 +75,9 @@ export class Person {
       })
       .catch(err => {
         //to do something
+        this.loading.hide();
       })
+      this.loading.hide();
     }
   testEvent(){
     this.localNotifications.schedule({

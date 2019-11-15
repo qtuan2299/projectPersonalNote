@@ -9,12 +9,14 @@ import { NotificationService } from "../../services/notification-service";
 import { User } from "../../services/globalData";
 import { Token } from "../../services/token";
 import { HTTP } from "@ionic-native/http";
+import { LoadingService } from "../../services/loading-services";
 @Component({
     templateUrl:"tab-page-2.html",
     providers: [WorkScheduleService,NotificationService]
 
 })
 export class Tab2{ 
+    d= new Date(); 
     params:any;
     item:any;
     tieuDe:String;
@@ -27,6 +29,7 @@ export class Tab2{
         private gd:User,
         private token:Token,
         private http:HTTP,
+        private loading:LoadingService,
          ){
         
         this.item=NavP.get("item");
@@ -39,6 +42,7 @@ export class Tab2{
     //     this.page = reorderArray(this.page, indexes);
     // }
     getAllSchedule(){
+        this.loading.show();
         let userData = this.gd.getUser(); 
       console.log("id: ",userData.result.id);
       
@@ -50,7 +54,7 @@ export class Tab2{
       }).then( data => {
         let Data = JSON.parse(data.data);
         console.log("data: ",Data);
-        
+        this.loading.hide();
         if(data.status == 200){
           for (let index = 0; index < Data.result.length; index++) {
             this.tieuDe = Data.result[index].tieuDe;
@@ -62,7 +66,9 @@ export class Tab2{
         //to do something
       })
       .catch(err => {
+          this.loading.hide();
         //to do something
       })
+      this.loading.hide();
     }
 }
